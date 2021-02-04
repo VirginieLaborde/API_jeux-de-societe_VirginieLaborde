@@ -37,6 +37,10 @@ class Boardgame {
         return new Boardgame(result.rows[0]);
     }
 
+    // async insert() {
+    //     const result = await db.query('INSERT INTO boardgame')
+    // }
+
 };
 
 module.exports = Boardgame;
