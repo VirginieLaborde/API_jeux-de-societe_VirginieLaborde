@@ -1,10 +1,16 @@
 const { Router } = require('express');
-const boardgameController = require('./controllers/boardgameController');
-
 const router = Router();
 
-router.get('/boardgames', boardgameController.allBoardgames);
-router.post('/boardgames', boardgameController.insertBoardgame);
+const boardgameController = require('./controllers/boardgameController');
+
+// Pour utiliser le module Joi 
+// afin de valider les données passées par les utilisateurs
+const { validateBody } = require('./services/validator');
+const boardgameSchema = require('./schemas/boardgameProposal');
+
+router.route('/boardgames')
+    .get(boardgameController.allBoardgames)
+    .post(validateBody(boardgameSchema), boardgameController.insertBoardgame);
 
 router.get('/boardgames/:id', boardgameController.oneBoardgame);
 

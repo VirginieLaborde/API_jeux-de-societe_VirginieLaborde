@@ -11,12 +11,28 @@ POST {{baseUrl}}//boardgames
 Content-Type: application/json
 
 {
-    "name": "Saboteur",
-    "min_age": "9",
+    "name": "Cluedo",
+    "min_age": "8",
     "min_players": "3",
-    "max_players": "10",
-    "type": "stratégie",
+    "max_players": "6",
+    "type": "déduction",
     "note": "4",
-    "duration": "60 minutes",
-    "creator": "Frederic Moyersoen"
+    "duration": "20 minutes",
+    "creator": "Anthony Pratt"
 }
+
+### ! Route POST /boardgames avec ERREURS (test de la validation Joi)
+POST {{baseUrl}}//boardgames
+Content-Type: application/json
+
+{
+    "name": "Cluedo",
+    "min_age": "8",
+    "min_players": "3",
+    "max_players": "6",
+    "type": "déduction",
+    "note": "4",
+    "duration": "20 minutes",
+    "creator": "Anthony Pratt"
+}
+
