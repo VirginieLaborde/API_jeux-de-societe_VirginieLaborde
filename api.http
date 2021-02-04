@@ -1,0 +1,22 @@
+@baseUrl = http://localhost:3000/v1
+
+### Route GET /boardgames
+GET {{baseUrl}}/boardgames
+
+### Route GET /boardgames/:id
+GET {{baseUrl}}/boardgames/3
+
+### Route POST /boardgames
+POST {{baseUrl}}//boardgames
+Content-Type: application/json
+
+{
+    "name": "Saboteur",
+    "min_age": "9",
+    "min_players": "3",
+    "max_players": "10",
+    "type": "stratégie",
+    "note": "4",
+    "duration": "60 minutes",
+    "creator": "Frederic Moyersoen"
+}

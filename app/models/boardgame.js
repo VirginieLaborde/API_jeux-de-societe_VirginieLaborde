@@ -21,6 +21,7 @@ class Boardgame {
     set min_age(val) {
         this.minAge = val;
     }
+
     constructor(data = {}) {
         for (const property in data) {
             this[property] = data[property];
@@ -37,9 +38,14 @@ class Boardgame {
         return new Boardgame(result.rows[0]);
     }
 
-    // async insert() {
-    //     const result = await db.query('INSERT INTO boardgame')
-    // }
+    static async save(game) {
+        const result = await db.query(`INSERT INTO "boardgame" 
+            ("name", "min_age", "min_players", "max_players", "type", "note", "duration", "creator")
+            VALUES ($1, $2, $3, $4, $5, $6, $7, $8) 
+            RETURNING "id"`,
+            [game.name, game.min_age, game.min_players, game.max_players, game.type, game.note, game.duration, game.creator]);
+        return result ;
+    }
 
 };
 

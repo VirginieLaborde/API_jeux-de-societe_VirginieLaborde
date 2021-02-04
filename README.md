@@ -9,3 +9,5 @@
   - Sqitch
 
 ## Structure des données
+
+Pour tester : fichier api.http avec l'extension VSC Rest client
