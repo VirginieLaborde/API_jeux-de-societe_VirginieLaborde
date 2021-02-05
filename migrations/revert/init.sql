@@ -4,6 +4,6 @@ BEGIN;
 
 DROP TABLE boardgame;
 
-DROP DOMAIN posint;
+DROP DOMAIN pint;
 
 COMMIT;
