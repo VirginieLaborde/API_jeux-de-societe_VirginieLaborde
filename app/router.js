@@ -10,8 +10,8 @@ const boardgameSchema = require('./schemas/boardgameProposal');
 
 router.route('/boardgames')
     .get(boardgameController.allBoardgames)
-    .post(validateBody(boardgameSchema), boardgameController.insertBoardgame);
-
+    .post(validateBody(boardgameSchema), boardgameController.newBoardgame);
+    
 router.get('/boardgames/:id', boardgameController.oneBoardgame);
 
 module.exports = router;

@@ -7,7 +7,7 @@ const schema = Joi.object({
     max_players: Joi.number().integer(),
     type: Joi.string().required(),
     note: Joi.number().integer().required(),
-    duration: Joi.string().required(),
+    duration: Joi.number().integer().required(),
     creator:Joi.string().required()
 });
 

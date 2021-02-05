@@ -1,10 +1,10 @@
-@baseUrl = http://localhost:3000/v1
+@baseUrl = http://localhost:3050/v1
 
 ### Route GET /boardgames
 GET {{baseUrl}}/boardgames
 
 ### Route GET /boardgames/:id
-GET {{baseUrl}}/boardgames/3
+GET {{baseUrl}}/boardgames/1
 
 ### Route POST /boardgames
 POST {{baseUrl}}//boardgames
@@ -12,12 +12,12 @@ Content-Type: application/json
 
 {
     "name": "Cluedo",
-    "min_age": "8",
-    "min_players": "3",
-    "max_players": "6",
+    "minAge": "8",
+    "minPlayers": "3",
+    "maxPlayers": "6",
     "type": "déduction",
     "note": "4",
-    "duration": "20 minutes",
+    "duration": "20",
     "creator": "Anthony Pratt"
 }
 
@@ -27,9 +27,9 @@ Content-Type: application/json
 
 {
     "name": "Cluedo",
-    "min_age": "8",
-    "min_players": "3",
-    "max_players": "6",
+    "minAge": "8",
+    "minPlayers": "3",
+    "maxPlayers": "6",
     "type": "déduction",
     "note": "4",
     "duration": "20 minutes",

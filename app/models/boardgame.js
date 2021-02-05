@@ -6,6 +6,8 @@ class Boardgame {
     minAge;
     minPlayers;
     maxPlayers;
+    type;
+    note;
     duration;
     creator;
 
@@ -38,13 +40,21 @@ class Boardgame {
         return new Boardgame(result.rows[0]);
     }
 
-    static async save(game) {
-        const result = await db.query(`INSERT INTO "boardgame" 
-            ("name", "min_age", "min_players", "max_players", "type", "note", "duration", "creator")
-            VALUES ($1, $2, $3, $4, $5, $6, $7, $8) 
-            RETURNING "id"`,
-            [game.name, game.min_age, game.min_players, game.max_players, game.type, game.note, game.duration, game.creator]);
-        return result ;
+    async save(game) {
+        const result = await db.query(`
+            SELECT * 
+            FROM new_boardgame($1,$2,$3,$4,$5,$6,$7,$8);`, [
+                this.name,
+                this.minAge,
+                this.minPlayers,
+                this.maxPlayers,
+                this.type,
+                this.note,
+                this.duration,
+                this.creator
+            ]);
+            this.id = result.rows[0].id;
+        // pas besoin de retourner l'objet, il est déjà dans le contexte global
     }
 
 };

@@ -12,10 +12,11 @@ const boardgameController = {
         response.json(game);
     },
 
-    insertBoardgame : async (request, response) => {
-        const game = request.body;
-        await Boardgame.save(game);
-        response.json(game);
+    newBoardgame : async (request, response) => {
+        const newGameData = request.body; // les infos du jeu à rajouter
+        const newGame = new Boardgame(newGameData);
+        await newGame.save(); // on await pour être sûr que tout est ok et bien réceptionner l'id créé
+        response.json(newGame);
     }
 
 }
