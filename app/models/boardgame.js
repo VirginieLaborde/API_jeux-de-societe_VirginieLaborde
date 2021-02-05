@@ -40,21 +40,10 @@ class Boardgame {
         return new Boardgame(result.rows[0]);
     }
 
-    async save(game) {
-        const result = await db.query(`
-            SELECT * 
-            FROM new_boardgame($1,$2,$3,$4,$5,$6,$7,$8);`, [
-                this.name,
-                this.minAge,
-                this.minPlayers,
-                this.maxPlayers,
-                this.type,
-                this.note,
-                this.duration,
-                this.creator
-            ]);
-            this.id = result.rows[0].id;
-        // pas besoin de retourner l'objet, il est déjà dans le contexte global
+    // pour utiliser la fonction SQL qui utilise le json 
+    async save() {
+        const result = await db.query(`SELECT * FROM new_boardgame($1);`, [this]);
+        this.id = result.rows[0].id;
     }
 
 };
