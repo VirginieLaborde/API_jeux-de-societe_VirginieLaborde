@@ -2,3 +2,4 @@
 %project=portfolio
 
 init 2021-02-04T13:04:02Z Virginie Laborde <virginielaborde.contact@gmail.com> # création de la table principale et du domaine pint
+check_players 2021-02-05T08:44:45Z Virginie Laborde <virginielaborde.contact@gmail.com> # ajout contrainte check pour min players < max players
