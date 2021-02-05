@@ -2,12 +2,18 @@ const Joi = require('joi');
 
 const schema = Joi.object({
     name: Joi.string().required(),
-    min_age: Joi.number().integer().required(),
-    min_players: Joi.number().integer().required(), 
-    max_players: Joi.number().integer(),
+    minAge: Joi.number().integer().positive().required(),
+    minPlayers: Joi.number().integer().positive().required(), 
+    maxPlayers: Joi.number().integer().positive(),
     type: Joi.string().required(),
-    note: Joi.number().integer().required(),
-    duration: Joi.number().integer().required(),
+    note: Joi.number().integer().positive().required(),
+    duration: [
+            Joi.number().integer().positive().required(), // en minutes
+            Joi.object({ // un objet avec des heures et des minutes
+                hours: Joi.number().integer().positive().required(),
+                minutes: Joi.number().integer().positive().required()
+            })
+    ],
     creator:Joi.string().required()
 });
 

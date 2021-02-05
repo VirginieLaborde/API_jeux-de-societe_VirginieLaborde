@@ -14,8 +14,15 @@ const boardgameController = {
 
     newBoardgame : async (request, response) => {
         const newGameData = request.body; // les infos du jeu à rajouter
+        
+        // pour gérer le fait qu'on autorise des durations aussi en format
+        // objet heure / minutes => convertir en minutes
+        if (typeof newGameData.duration === "object") {
+            newGameData.duration=60*newGameData.duration.hours + newGameData.duration.minutes;
+        }
+
         const newGame = new Boardgame(newGameData);
-        await newGame.save(); // on await pour être sûr que tout est ok et bien réceptionner l'id créé
+        await newGame.save(); 
         response.json(newGame);
     }
 

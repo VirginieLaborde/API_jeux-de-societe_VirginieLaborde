@@ -11,14 +11,14 @@ POST {{baseUrl}}//boardgames
 Content-Type: application/json
 
 {
-    "name": "Cluedo",
+    "name": "Dixit",
     "minAge": "8",
     "minPlayers": "3",
     "maxPlayers": "6",
-    "type": "déduction",
-    "note": "4",
-    "duration": "20",
-    "creator": "Anthony Pratt"
+    "type": "créativité",
+    "note": "5",
+    "duration": "60",
+    "creator": "Jean-Louis Roubira"
 }
 
 ### ! Route POST /boardgames avec ERREURS (test de la validation Joi)
