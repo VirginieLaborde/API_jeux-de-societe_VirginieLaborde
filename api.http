@@ -36,3 +36,5 @@ Content-Type: application/json
     "creator": "Anthony Pratt"
 }
 
+### Route DELETE /boardgames/:id
+DELETE {{baseUrl}}//boardgames/4

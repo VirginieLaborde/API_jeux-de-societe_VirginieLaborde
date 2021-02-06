@@ -24,6 +24,15 @@ const boardgameController = {
         const newGame = new Boardgame(newGameData);
         await newGame.save(); 
         response.json(newGame);
+    },
+
+    // TODO répondre s'il n'y a pas de jeu trouvé
+    deleteOneBoardgame : async (request, response) => {
+        const id = Number(request.params.id);
+        const requestedGame = await Boardgame.findOne(id);
+        const foundGame = new Boardgame(requestedGame);
+        await foundGame.delete();
+        response.json('ok');
     }
 
 }
