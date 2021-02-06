@@ -4,7 +4,7 @@
 GET {{baseUrl}}/boardgames
 
 ### Route GET /boardgames/:id
-GET {{baseUrl}}/boardgames/1
+GET {{baseUrl}}/boardgames/6
 
 ### Route POST /boardgames
 POST {{baseUrl}}//boardgames
@@ -37,4 +37,4 @@ Content-Type: application/json
 }
 
 ### Route DELETE /boardgames/:id
-DELETE {{baseUrl}}//boardgames/4
+DELETE {{baseUrl}}//boardgames/26

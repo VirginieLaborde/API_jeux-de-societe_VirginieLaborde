@@ -1,18 +1,26 @@
 const Boardgame = require('../models/boardgame');
 
 const boardgameController = {
-    allBoardgames : async (request, response) => {
-        const games = await Boardgame.findAll();
-        response.json(games);
+    allBoardgames : async (request, response, next) => {
+        try {
+            const games = await Boardgame.findAll();
+            response.json(games);
+        } catch (error) {
+            next(error);
+        }
     },
 
-    oneBoardgame : async (request, response) => {
+    oneBoardgame : async (request, response, next) => {
         const id = Number(request.params.id);
-        const game = await Boardgame.findOne(id);
-        response.json(game);
+        try {
+            const game = await Boardgame.findOne(id);
+            response.json(game);
+        } catch (error) {
+            next(error);
+        }
     },
 
-    newBoardgame : async (request, response) => {
+    newBoardgame : async (request, response, next) => {
         const newGameData = request.body; // les infos du jeu à rajouter
         
         // pour gérer le fait qu'on autorise des durations aussi en format
@@ -22,17 +30,30 @@ const boardgameController = {
         }
 
         const newGame = new Boardgame(newGameData);
-        await newGame.save(); 
-        response.json(newGame);
+        try {        
+            await newGame.save(); 
+            response.json(newGame); 
+        } catch (error) {
+            next(error);
+        }
+
     },
 
     // TODO répondre s'il n'y a pas de jeu trouvé
-    deleteOneBoardgame : async (request, response) => {
+    deleteOneBoardgame : async (request, response, next) => {
         const id = Number(request.params.id);
-        const requestedGame = await Boardgame.findOne(id);
-        const foundGame = new Boardgame(requestedGame);
-        await foundGame.delete();
-        response.json('ok');
+        try {
+            const requestedGame = await Boardgame.findOne(id);
+            if (requestedGame.id===undefined) {
+                next();
+            } else {            
+                const foundGame = new Boardgame(requestedGame);
+                await foundGame.delete();
+                response.status(200).json(); 
+            }
+        } catch (error) {
+            next(error);
+        }
     }
 
 }
