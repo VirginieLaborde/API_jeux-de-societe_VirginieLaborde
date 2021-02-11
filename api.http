@@ -4,7 +4,7 @@
 GET {{baseUrl}}/boardgames
 
 ### Route GET /boardgames/:id
-GET {{baseUrl}}/boardgames/6
+GET {{baseUrl}}/boardgames/26
 
 ### Route GET /boardgames/:id AVEC ERREUR
 GET {{baseUrl}}/boardgames/12

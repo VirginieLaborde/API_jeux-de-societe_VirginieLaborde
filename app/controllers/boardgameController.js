@@ -63,9 +63,14 @@ const boardgameController = {
         };
 
         const newGame = new Boardgame(newGameData);
-        try {        
-            await newGame.update(id); 
-            response.json(newGame); 
+        try {   
+            const requestedGame = await Boardgame.findOne(id);  
+            if (requestedGame.id===undefined) {
+                next();
+            } else {   
+                await newGame.update(id); 
+                response.json(newGame); 
+            }
         } catch (error) {
             next(error);
         }
