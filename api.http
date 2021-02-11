@@ -6,6 +6,9 @@ GET {{baseUrl}}/boardgames
 ### Route GET /boardgames/:id
 GET {{baseUrl}}/boardgames/6
 
+### Route GET /boardgames/:id AVEC ERREUR
+GET {{baseUrl}}/boardgames/12
+
 ### Route POST /boardgames
 POST {{baseUrl}}//boardgames
 Content-Type: application/json
@@ -37,4 +40,21 @@ Content-Type: application/json
 }
 
 ### Route DELETE /boardgames/:id
-DELETE {{baseUrl}}//boardgames/26
+DELETE {{baseUrl}}//boardgames/27
+
+### Route PATCH /boardgames/:id
+PATCH {{baseUrl}}//boardgames/6
+Content-Type: application/json
+
+{
+    "name": "Cluedo",
+    "minAge": "8",
+    "minPlayers": "3",
+    "maxPlayers": "6",
+    "type": "déduction",
+    "note": "4",
+    "duration": "20 minutes",
+    "creator": "Anthony Pratt"
+}
+
+

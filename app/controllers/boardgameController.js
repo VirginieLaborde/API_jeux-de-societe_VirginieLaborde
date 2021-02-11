@@ -39,7 +39,6 @@ const boardgameController = {
 
     },
 
-    // TODO répondre s'il n'y a pas de jeu trouvé
     deleteOneBoardgame : async (request, response, next) => {
         const id = Number(request.params.id);
         try {
@@ -51,6 +50,22 @@ const boardgameController = {
                 await foundGame.delete();
                 response.status(200).json(); 
             }
+        } catch (error) {
+            next(error);
+        }
+    },
+
+    updateOneBoardgame : async (request, response, next) => {
+        const id = Number(request.params.id);
+        const newGameData = request.body; // les infos du jeu à modifier
+        if (typeof newGameData.duration === "object") {
+            newGameData.duration=60*newGameData.duration.hours + newGameData.duration.minutes;
+        };
+
+        const newGame = new Boardgame(newGameData);
+        try {        
+            await newGame.update(id); 
+            response.json(newGame); 
         } catch (error) {
             next(error);
         }

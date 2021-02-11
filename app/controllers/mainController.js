@@ -2,7 +2,7 @@ const mainController = {
 
     notFound : (request, response) => {
         response.status(404).json({
-            erreur: 'jeu non trouvé !'
+            erreur: 'page non trouvée !'
         });
     },
 
@@ -11,7 +11,7 @@ const mainController = {
         console.trace(error);
         console.log(error.message);
         response.status(500).json({
-            erreur: 'Erreur : Problème de serveur'
+            erreur: error.message
         });
     } 
 
