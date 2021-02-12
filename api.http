@@ -6,8 +6,11 @@ GET {{baseUrl}}/boardgames
 ### Route GET /boardgames/:id
 GET {{baseUrl}}/boardgames/26
 
-### Route GET /boardgames/:id AVEC ERREUR
+### Route GET /boardgames/:id AVEC ERREUR - mauvais numéro
 GET {{baseUrl}}/boardgames/12
+
+### Route GET /boardgames/:id AVEC ERREUR - mauvais type 
+GET {{baseUrl}}/boardgames/test
 
 ### Route POST /boardgames
 POST {{baseUrl}}//boardgames
