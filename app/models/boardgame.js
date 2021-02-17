@@ -32,7 +32,7 @@ class Boardgame {
 
     static async findAll() {
         try {         
-            const result = await db.query('SELECT * FROM boardgame;');
+            const result = await db.query('SELECT * FROM boardgame ORDER BY id ASC;');
 
             if (!result.rows[0]) {
                 throw new Error("pas trouvé de jeu(x)");

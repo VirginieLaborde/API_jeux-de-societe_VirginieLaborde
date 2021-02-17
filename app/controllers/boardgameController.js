@@ -57,20 +57,34 @@ const boardgameController = {
 
     updateOneBoardgame : async (request, response, next) => {
         const id = Number(request.params.id);
-        const newGameData = request.body; // les infos du jeu à modifier
-        if (typeof newGameData.duration === "object") {
-            newGameData.duration=60*newGameData.duration.hours + newGameData.duration.minutes;
-        };
+        const patchData = request.body; // les infos du jeu à modifier
 
-        const newGame = new Boardgame(newGameData);
         try {   
+
+            // on récupère en BDD le jeu qu'on souhaite modifier
             const requestedGame = await Boardgame.findOne(id);  
+
             if (requestedGame.id===undefined) {
                 next();
-            } else {   
+
+            } else { 
+                // on vérifie quels champs sont renseignés dans le body
+                // et on complète le reste
+                for (const field in patchData) {
+                    if (typeof requestedGame[field] !== 'undefined') {
+                        requestedGame[field] = patchData[field];
+                    }
+                };
+
+                if (typeof requestedGame.duration === "object") {
+                    requestedGame.duration=60*requestedGame.duration.hours + requestedGame.duration.minutes;
+                };
+
+                const newGame = new Boardgame(requestedGame);
                 await newGame.update(id); 
                 response.json(newGame); 
             }
+
         } catch (error) {
             next(error);
         }
