@@ -34,9 +34,8 @@ Content-Type: application/json
 {
     "name": "Cluedo",
     "minAge": "8",
-    "minPlayers": "test",
+    "minPlayers": "4",
     "maxPlayers": "6",
-    "type": "déduction",
     "note": "4",
     "duration": "20 minutes",
     "creator": "Anthony Pratt"
@@ -66,7 +65,7 @@ Content-Type: application/json
 
 {
     "minAge": "10",
-    "note": "5",
+    "note": "4",
     "duration": "60",
     "creator": "test"
 }
