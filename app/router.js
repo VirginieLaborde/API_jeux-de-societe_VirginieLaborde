@@ -7,14 +7,14 @@ const mainController = require('./controllers/mainController');
 // Pour utiliser le module Joi 
 // afin de valider les données passées par les utilisateurs
 const { validateBody } = require('./services/validator');
-const boardgameSchema = require('./schemas/boardgameProposal');
+const { schema, postSchema} = require('./schemas/boardgameProposal');
 
 router.get('/boardgames',boardgameController.allBoardgames);
-router.post('/boardgames',validateBody(boardgameSchema), boardgameController.newBoardgame);
+router.post('/boardgames',validateBody(postSchema), boardgameController.newBoardgame);
  
 router.get('/boardgames/:id(\\d+)', boardgameController.oneBoardgame);
 router.delete('/boardgames/:id(\\d+)', boardgameController.deleteOneBoardgame);
-router.patch('/boardgames/:id(\\d+)', boardgameController.updateOneBoardgame);
+router.patch('/boardgames/:id(\\d+)', validateBody(schema), boardgameController.updateOneBoardgame);
 
 router.use(mainController.notFound);
 router.use(mainController.erreurServeur);

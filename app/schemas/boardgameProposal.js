@@ -1,20 +1,58 @@
 const Joi = require('joi');
 
 const schema = Joi.object({
-    name: Joi.string().required(),
-    minAge: Joi.number().integer().positive().required(),
-    minPlayers: Joi.number().integer().positive().required(), 
+
+    name: Joi.string()
+        .alter({
+            post: (schema) => schema.required()
+        }),
+
+    minAge: Joi.number().integer().positive()
+        .alter({
+            post: (schema) => schema.required()
+        }),
+
+    minPlayers: Joi.number().integer().positive()
+        .alter({
+            post: (schema) => schema.required()
+        }),
+
     maxPlayers: Joi.number().integer().positive(),
-    type: Joi.string().required(),
-    note: Joi.number().integer().positive().required(),
+
+    type: Joi.string()
+        .alter({
+            post: (schema) => schema.required()
+        }),
+
+    note: Joi.number().integer().positive()
+        .alter({
+            post: (schema) => schema.required()
+        }),
+
     duration: [
-            Joi.number().integer().positive().required(), // en minutes
+            Joi.number().integer().positive()
+                .alter({
+                    post: (schema) => schema.required()
+                }), // en minutes
             Joi.object({ // un objet avec des heures et des minutes
-                hours: Joi.number().integer().positive().required(),
-                minutes: Joi.number().integer().positive().required()
+                hours: Joi.number().integer().positive()
+                    .alter({
+                        post: (schema) => schema.required()
+                    }),
+                minutes: Joi.number().integer().positive()
+                    .alter({
+                        post: (schema) => schema.required()
+                    }),
             })
     ],
-    creator:Joi.string().required()
+
+    creator:Joi.string()
+        .alter({
+            post: (schema) => schema.required()
+        }),
 });
 
-module.exports = schema;
+const postSchema = schema.tailor('post');
+
+exports.schema = schema;
+exports.postSchema = postSchema;

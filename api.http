@@ -19,7 +19,7 @@ Content-Type: application/json
 {
     "name": "Dixit",
     "minAge": "8",
-    "minPlayers": "3",
+    "minPlayers": "4",
     "maxPlayers": "6",
     "type": "créativité",
     "note": "5",
@@ -34,7 +34,7 @@ Content-Type: application/json
 {
     "name": "Cluedo",
     "minAge": "8",
-    "minPlayers": "3",
+    "minPlayers": "test",
     "maxPlayers": "6",
     "type": "déduction",
     "note": "4",
@@ -52,11 +52,11 @@ Content-Type: application/json
 {
     "name": "Cluedo",
     "minAge": "8",
-    "minPlayers": "3",
+    "minPlayers": "5",
     "maxPlayers": "6",
     "type": "déduction",
     "note": "4",
-    "duration": "20 minutes",
+    "duration": "20",
     "creator": "Anthony Pratt"
 }
 
@@ -65,8 +65,8 @@ PATCH {{baseUrl}}//boardgames/6
 Content-Type: application/json
 
 {
-    "minAge": "8",
-    "note": "4",
-    "duration": "20 minutes",
-    "creator": "Anthony Pratt"
+    "minAge": "10",
+    "note": "5",
+    "duration": "60",
+    "creator": "test"
 }
