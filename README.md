@@ -10,6 +10,8 @@ J'ai codé ce projet en 2jrs environ, dans le cadre de la spécialisation API, d
 J'ai tout d'abord commencé par la partie back : base de données relationnelles (SQL), mise en place de l'API.
 J'ai utilisé l'approche Active Record.
 
+Le côté front sera construit ultérieurement.
+
 ## Langages utilisés
 
 - JavaScript
@@ -69,10 +71,6 @@ Reprendre les informations demandées citées dans [le fichier .env.example](./.
 
 ### Utilisation
 
-Pour tester côté back, je préconise [l'extension VSCode "Rest Client"](https://marketplace.visualstudio.com/items?itemName=humao.rest-client)
-
-Vous pourrez par exemple utiliser [le fichier api.http](./api.http).
-
-<!-- ## Licence
-
-Ce projet est sous licence MIT - voir le fichier LICENSE pour plus de détails. -->
+Pour tester côté back, 2 solutions :
+1. [l'extension VSCode "Rest Client"](https://marketplace.visualstudio.com/items?itemName=humao.rest-client). Vous pourrez par exemple utiliser [le fichier api.http](./api.http).
+2. La documentation à l'adresse ```http://<app_host>:<app_port>/api-docs``` (comme indiqué ci-dessus).
