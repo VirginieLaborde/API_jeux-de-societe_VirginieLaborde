@@ -13,7 +13,7 @@
     "joi",
     "pg"
   ],
-  "author": "Jean Pruliere",
+  "author": "Virginie Laborde",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/O-clock-NN/data-portfolio-VirginieLaborde/issues"
@@ -22,6 +22,7 @@
   "dependencies": {
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "express-swagger-generator": "^1.1.17",
     "joi": "^17.3.0",
     "pg": "^8.5.1"
   }

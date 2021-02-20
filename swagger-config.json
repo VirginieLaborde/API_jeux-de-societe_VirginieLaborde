@@ -1,0 +1,15 @@
+{
+    "swaggerDefinition": {
+        "info": {
+            "description": "API de gestion d'une collection de jeux de société",
+            "title": "Mes jeux de société",
+            "version": "1.0.0"
+        },
+        "basePath": "/v1",
+        "produces": [
+            "application/json"
+        ],
+        "schemes": ["http"]
+    },
+    "files": ["./app/router.js", "./app/models/boardgame.js"]
+}

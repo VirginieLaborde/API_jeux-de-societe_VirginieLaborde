@@ -1,6 +1,23 @@
 const db = require('../database');
 
+/**
+ * On définit ici la classe Boardgame (jeu de société), dans l'approche Active Record
+ */
 class Boardgame {
+    
+    /**
+     * Un jeu de société
+     * @typedef Boardgame
+     * @property {string} name="Test" - nom du jeu
+     * @property {number} minAge="5" - âge minimum
+     * @property {number} minPlayers="4" - nombre de joueurs minimum
+     * @property {number} [maxPlayers="6"] - nombre de joueurs maximum
+     * @property {string} type="familial" - type du jeu
+     * @property {number} note="5" - note personnelle donnée au jeu 
+     * @property {number} duration="20" - durée moyenne : en minutes ou en heure/minutes
+     * @property {string} creator="Test" - créator du jeu
+     */
+
     id;
     name;
     minAge;
@@ -11,25 +28,31 @@ class Boardgame {
     duration;
     creator;
 
-    // gérer la conversion de la casse (camelCase ici, snake_case côté BDD)
+    // Pour gérer la conversion de la casse (camelCase ici, snake_case côté base de données)
     set min_players(val) {
         this.minPlayers = val;
     }
-
     set max_players(val) {
         this.maxPlayers = val;
     }
-
     set min_age(val) {
         this.minAge = val;
     }
 
+    /**
+     * Crée un jeu de société
+     * @param {Object} data 
+     */
     constructor(data = {}) {
         for (const property in data) {
             this[property] = data[property];
         }
     }
 
+    /**
+     * Méthode findAll, static & asynchrone : retourne tous les jeux trouvés en base de données
+     * @returns {Boardgame} retourne un tableau d'instances de Boardgame
+     */
     static async findAll() {
         try {         
             const result = await db.query('SELECT * FROM boardgame ORDER BY id ASC;');
@@ -44,6 +67,11 @@ class Boardgame {
         }     
     }
 
+    /**
+     * Méthode findOne, static & asynchrone : retourne le jeu demandé, trouvé en base de données
+     * @param {Number} id - id du jeu demandé, issu de la requête
+     * @returns {Boardgame} retourne une instance de Boardgame
+     */
     static async findOne(id) {
         try {
             const result = await db.query('SELECT * FROM boardgame WHERE id = $1;', [id]);
@@ -58,7 +86,10 @@ class Boardgame {
         } 
     }
 
-    // pour utiliser la fonction SQL qui utilise le json 
+    /**
+     * Méthode save, asynchrone
+     * Tire parti de la fonction SQL qui utilise le json 
+     */
     async save() {
         try {         
             const result = await db.query(`SELECT * FROM new_boardgame($1);`, [this]);
@@ -68,6 +99,9 @@ class Boardgame {
         }
     }
 
+    /**
+     * Méthode delete, asynchrone
+     */
     async delete () {
         try {
             const result = await db.query(`DELETE FROM boardgame WHERE "id"=$1`,[this.id]);
@@ -76,6 +110,10 @@ class Boardgame {
         }
     }
 
+    /**
+     * Méthode update, asynchrone
+     * @param {Number} id - id du jeu demandé, issu de la requête
+     */
     async update(id) {
         try {         
             await db.query(`

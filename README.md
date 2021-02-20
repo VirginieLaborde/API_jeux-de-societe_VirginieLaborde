@@ -22,6 +22,14 @@ J'ai utilisé l'approche Active Record.
   - Joi
 - PostgreSQL 11+
   - Sqitch
+- JSDoc
+  - Swagger
+
+## Documentation
+
+J'ai documenté le projet à l'aide de ```JSDoc``` et du module ```express-swagger-generator```.
+
+La documentation sera visible à l'adresse ```http://<app_host>:<app_port>/api-docs```.
 
 ## Structure des données
 

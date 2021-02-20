@@ -1,6 +1,20 @@
 const Boardgame = require('../models/boardgame');
 
+/**
+ * Ce controller est chargé de centraliser les middlewares (MW) en lien avec le model de nos jeux de société
+ */
+
 const boardgameController = {
+
+    /**
+     * MW pour afficher TOUS les jeux de société
+     * @module allBoardgames
+     * @function
+     * @param {Express.Request} [request] - objet représentant la requête
+     * @param {Express.Response} response - objet représentant la réponse
+     * @param {function} next - prochain MW 
+     * @returns {JSON} - les jeux trouvés
+     */
     allBoardgames : async (request, response, next) => {
         try {
             const games = await Boardgame.findAll();
@@ -10,6 +24,16 @@ const boardgameController = {
         }
     },
 
+    /**
+     * MW pour afficher UN jeu de société
+     * L'identifiant du jeu est fournit dans les paramètres de la requête
+     * @module oneBoardgame
+     * @function
+     * @param {Express.Request} request.params - objet de la requête, contient l'id du jeu recherché
+     * @param {Express.Response} response - objet représentant la réponse
+     * @param {function} next - prochain MW
+     * @returns {JSON} - le jeu trouvé
+     */
     oneBoardgame : async (request, response, next) => {
         const id = Number(request.params.id);
         try {
@@ -20,6 +44,16 @@ const boardgameController = {
         }
     },
 
+    /**
+     * MW pour ajouter un jeu de société
+     * L'utilisateur fournit les informations dans le corps de la requête
+     * @module newBoardgame
+     * @function
+     * @param {Express.Request} request.body - objet de la requête, contient les infos du jeu à ajouter
+     * @param {Express.Response} response - objet représentant la réponse
+     * @param {function} [next] - prochain MW
+     * @returns {JSON} - le jeu sauvegardé
+     */
     newBoardgame : async (request, response, next) => {
         const newGameData = request.body; // les infos du jeu à rajouter
         
@@ -39,6 +73,16 @@ const boardgameController = {
 
     },
 
+    /**
+     * MW pour supprimer un jeu de société
+     * L'identifiant du jeu est fournit dans les paramètres de la requête
+     * @module deleteOneBoardgame
+     * @function
+     * @param {Express.Request} request.params - objet de la requête, contient l'id du jeu à supprimer
+     * @param {Express.Response} response - objet représentant la réponse
+     * @param {function} [next] - prochain MW
+     * @returns {JSON} - succès
+     */
     deleteOneBoardgame : async (request, response, next) => {
         const id = Number(request.params.id);
         try {
@@ -55,7 +99,23 @@ const boardgameController = {
         }
     },
 
+
+    /**
+     * MW pour mettre à jour UN jeu de société
+     * L'identifiant du jeu est fournit dans les paramètres de la requête
+     * L'utilisateur fournit les informations à modifier dans le corps de la requête
+     * @module updateOneBoardgame
+     * @function
+     * @param {Express.Request} request.params - objet de la requête, contient l'id du jeu à supprimer
+     * @param {Express.Request} request.body - objet de la requête, contient les infos du jeu à modifier
+     * @param {Express.Response} response - objet représentant la réponse
+     * @param {function} [next] - prochain MW
+     * @returns {JSON} - le jeu modifié
+     */
     updateOneBoardgame : async (request, response, next) => {
+
+        console.log(request.body);
+        console.log(request.params);
         const id = Number(request.params.id);
         const patchData = request.body; // les infos du jeu à modifier
 
