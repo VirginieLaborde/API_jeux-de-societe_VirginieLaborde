@@ -16,9 +16,9 @@
   "author": "Virginie Laborde",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/O-clock-NN/data-portfolio-VirginieLaborde/issues"
+    "url": "https://github.com/VirginieLaborde/API_jeux-de-societe_VirginieLaborde/issues"
   },
-  "homepage": "https://github.com/O-clock-NN/data-portfolio-VirginieLaborde#readme",
+  "homepage": "https://github.com/VirginieLaborde/API_jeux-de-societe_VirginieLaborde#readme",
   "dependencies": {
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
